@@ -36,7 +36,7 @@ mp <- dfzx %>%
   addTiles() %>% setView(lng = -117.014693, lat = 33.531265,  zoom = 13) %>% 
   addMarkers(icon=wineryIcon, popup = wineryPopus)
 mp
-#setView(mp, 33.545246, -117.003393, zoom=10)
+
 ```
 
 ## Conclusion
