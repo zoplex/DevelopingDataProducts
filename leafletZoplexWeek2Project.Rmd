@@ -1,0 +1,47 @@
+---
+title: "John Hopkins Coursera Course Developing Data Products - week2 Leaflet project"
+author: "zoplex, April 27th 2017"
+always_allow_html: yes
+---
+
+
+
+
+This project ilustrates using leaflet package with R markdown to create interactive map.
+For each icon the link is provided so that clicking on it redirects to the winery website.
+Map shows few selected wineries, out of many more.
+
+## Temecula Valley - Southern California Wine Country 
+
+```{r, echo=FALSE, warning=FALSE}
+set.seed(2016)
+library(leaflet)
+
+
+dfzx    <- data.frame( lat = c(33.545246, 33.541919, 33.541857, 33.531265)
+                     , lng = c(-117.003393, -117.010387, -117.034893, -117.014693) )
+
+wineryPopus <- c(
+  "<a href='http://www.masiadelavinya.com/'>Masia de la Vinya Winery</a>",
+  "<a href='http://www.frangipaniwinery.com/'>Frangipani Estate Winery</a>",
+  "<a href='http://www.palumbofamilyvineyards.com/'>Palumbo Family Vineyard</a>",
+  "<a href='http://www.danzadelsolwinery.com/'>Danza del Sol Winery</a>"
+)
+
+wineryIcon <- makeIcon("wineGlass48x48.png", 48, 48)  
+
+
+mp <- dfzx %>% 
+  leaflet() %>%
+  addTiles() %>% setView(lng = -117.014693, lat = 33.531265,  zoom = 13) %>% 
+  addMarkers(icon=wineryIcon, popup = wineryPopus)
+mp
+#setView(mp, 33.545246, -117.003393, zoom=10)
+```
+
+## Conclusion
+
+For more details about the leaflet package for R visit http://rstudio.github.io/leaflet/.
+
+
+
